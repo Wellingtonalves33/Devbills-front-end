@@ -6,7 +6,7 @@
 
   return (
     <>
-      <h2>Devbills</h2>
+      <h2>Devbills-app</h2>
     </>
   )
 }
