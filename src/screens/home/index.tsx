@@ -1,10 +1,11 @@
 import { InputMask } from '@react-input/mask';
 import { Button } from '../../components/button';
 import { ButtonIcon } from '../../components/button-icon';
+import { Card } from '../../components/card';
 import { Input } from '../../components/input';
 import { Logo } from '../../components/logo';
 import { Title } from '../../components/title';
-import { Filters, Header, InputGroup, Main, Secyion } from './styles';
+import { Balance, Filters, Header, InputGroup, Main, Secyion } from './styles';
 
 export function Home() {
   return (
@@ -39,6 +40,11 @@ export function Home() {
               <ButtonIcon />
             </InputGroup>
           </Filters>
+          <Balance>
+            <Card title="Saldo" amount={1000000} />
+            <Card title="Saldo" amount={1000000} vartiant="incomes" />
+            <Card title="Saldo" amount={1000000} vartiant="expenses" />
+          </Balance>
         </Secyion>
       </Main>
     </>
