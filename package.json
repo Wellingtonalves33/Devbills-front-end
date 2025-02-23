@@ -12,8 +12,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-input/mask": "^2.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-input-mask": "^2.0.4",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
