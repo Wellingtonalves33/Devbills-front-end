@@ -10,7 +10,7 @@ type TransactionProps = {
     title: string;
     color: string;
   };
-  variant?: 'income' | 'outcome';
+  variant?: 'income' | 'expense';
 };
 export function Transaction({
   id,
