@@ -2,6 +2,7 @@ import { InputMask } from '@react-input/mask';
 import { Button } from '../../components/button';
 import { ButtonIcon } from '../../components/button-icon';
 import { Card } from '../../components/card';
+import { Dialog } from '../../components/dialog';
 import { Input } from '../../components/input';
 import { Logo } from '../../components/logo';
 import { Title } from '../../components/title';
@@ -18,6 +19,7 @@ import {
   Main,
   SearchTransaction,
   Secyion,
+  TransactionGroup,
 } from './styles';
 
 export function Home() {
@@ -26,7 +28,7 @@ export function Home() {
       <Header>
         <Logo />
         <div>
-          <Button variant="outline">Nova transação</Button>
+          <Dialog trigger={<Button>Nova transação</Button>}>Olá</Dialog>
           <Button variant="outline">Nova categoria</Button>
         </div>
       </Header>
@@ -98,6 +100,9 @@ export function Home() {
               <Input variant="black" placeholder="Procurar transação..." />
               <ButtonIcon />
             </SearchTransaction>
+          </header>
+
+          <TransactionGroup>
             <Transaction
               id={1}
               date="12/05/2024"
@@ -105,7 +110,31 @@ export function Home() {
               category={{ title: 'Alimentação', color: '#ff33bb' }}
               title="Mercado"
             />
-          </header>
+
+            <Transaction
+              id={1}
+              date="12/05/2024"
+              amount={100000}
+              category={{ title: 'Alimentação', color: '#ff33bb' }}
+              title="Mercado"
+            />
+
+            <Transaction
+              id={1}
+              date="12/05/2024"
+              amount={100000}
+              category={{ title: 'Alimentação', color: '#ff33bb' }}
+              title="Mercado"
+            />
+
+            <Transaction
+              id={1}
+              date="12/05/2024"
+              amount={100000}
+              category={{ title: 'Alimentação', color: '#ff33bb' }}
+              title="Mercado"
+            />
+          </TransactionGroup>
         </Aside>
       </Main>
     </>
