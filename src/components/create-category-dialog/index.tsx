@@ -29,7 +29,7 @@ export function CreateCategoryDialog() {
 
         <form>
           <div>
-            <Input label="Nome" placeholder="Nome da categoria" />
+            <Input label="Nome" placeholder="Nome da categoria..." />
             <Input label="Cor" type="color" />
           </div>
           <footer>
