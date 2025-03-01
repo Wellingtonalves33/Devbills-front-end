@@ -12,11 +12,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/bar": "^0.88.0",
     "@nivo/pie": "^0.88.0",
     "@phosphor-icons/react": "^2.1.7",
     "@radix-ui/react-dialog": "^1.1.6",
     "@react-input/mask": "^2.0.4",
     "@react-input/number-format": "^2.0.3",
+    "dayjs": "^1.11.13",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-input-mask": "^2.0.4",
