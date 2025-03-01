@@ -17,7 +17,9 @@ border: 0;
 padding: 0 0.75rem;
 transition: all 100ms ease-in-out;
 
-${({ $variant }) => $variant === 'outline' && css`
+${({ $variant }) =>
+  $variant === 'outline' &&
+  css`
     border: 1px solid ${theme.colors.primary};
     color: ${theme.colors.primary};
 `}
@@ -25,5 +27,9 @@ ${({ $variant }) => $variant === 'outline' && css`
 &:hover {
     background-color: ${theme.colors.primaryDark};
     color: ${theme.colors.white};
+}
+&:active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.black};
 }
 `;

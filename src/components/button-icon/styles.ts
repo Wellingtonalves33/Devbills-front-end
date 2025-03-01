@@ -23,4 +23,8 @@ svg{
     height: 1.25rem;
     width: 3rem;
 }
+&:active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.black};
+}
 `;
