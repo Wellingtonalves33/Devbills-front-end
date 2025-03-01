@@ -1,28 +1,15 @@
 import { ResponsivePie } from '@nivo/pie';
 import { useMemo } from 'react';
+
+import type { Expense } from '../../services/api-types';
 import { theme } from '../../styles/theme';
 import { formatCurrency } from '../../utils/format-currency';
 
-const apiData = [
-  {
-    _id: '1',
-    title: 'Alimentação',
-    amount: 4000,
-    color: '#0f8aad',
-  },
-  {
-    _id: '2',
-    title: 'Compras',
-    amount: 1500,
-    color: '#1fb94b',
-  },
-  {
-    _id: '4',
-    title: 'Agua e luz',
-    amount: 8000,
-    color: '#76004e',
-  },
-];
+export type CategoryProps = {
+  id: string;
+  title: string;
+  color: string;
+};
 
 type ChartData = {
   id: string;
@@ -32,45 +19,65 @@ type ChartData = {
   color: string;
 };
 
-export function CategoriesPieChart() {
+type CategoriesPieChartProps = {
+  onClick: (category: CategoryProps) => void;
+  expenses?: Expense[];
+};
+
+export function CategoriesPieChart({
+  onClick,
+  expenses,
+}: CategoriesPieChartProps) {
   const data = useMemo<ChartData[]>(() => {
-    const chartData: ChartData[] = apiData.map((item) => ({
-      id: item.title,
-      label: item.title,
-      externalId: item._id,
-      value: item.amount,
-      color: item.color,
-    }));
-    return chartData;
-  }, []);
+    if (expenses?.length) {
+      const chartData: ChartData[] = expenses.map((item) => ({
+        id: item.title,
+        label: item.title,
+        externalId: item._id,
+        value: item.amount,
+        color: item.color,
+      }));
+
+      return chartData;
+    }
+
+    return [];
+  }, [expenses]);
 
   return (
     <ResponsivePie
+      onClick={({ data }) =>
+        onClick({
+          id: data.externalId,
+          title: data.id,
+          color: data.color,
+        })
+      }
       data={data}
       enableArcLabels={false}
       enableArcLinkLabels={false}
       colors={({ data }) => data.color}
-      margin={{ top: 33 }}
+      margin={{ top: 20 }}
       valueFormat={formatCurrency}
       theme={{
-          text:{
+        text: {
+          fontFamily: 'Lexend',
+          fontSize: 10,
+        },
+        tooltip: {
+          container: {
+            backgroundColor: theme.colors.black,
+            padding: 16,
+            color: theme.colors.white,
             fontFamily: 'Lexend',
-            fontSize: 10,
+            fontSize: 12,
+            borderRadius: 4,
           },
-          tooltip: {
-            container: {
-              background: theme.colors.black,
-              padding: 16,
-              color: theme.colors.white,
-              fontFamily: 'Lexend',
-              fontSize: 12,
-              borderRadius: 4,
-            },
-          }
+        },
       }}
       legends={[
         {
-          anchor:'top',
+          anchor: 'top',
           direction: 'row',
           justify: false,
           translateX: 0,
@@ -80,9 +87,9 @@ export function CategoriesPieChart() {
           itemTextColor: theme.colors.neutral,
           itemDirection: 'left-to-right',
           itemOpacity: 1,
-          symbolSize: 18,
+          symbolSize: 10,
           symbolShape: 'circle',
-        }
+        },
       ]}
     />
   );
